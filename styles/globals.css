@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color:rgb(7, 7, 7);
+  background-color:#ffda03;   
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background-color: #ffda03;
+  }
+}
+
+#sound-canvas {
+  border: none;
+  background:rgb(70, 70, 70);
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+#overlay-image {
+  position:absolute;
+  left:0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+  z-index: 2;
+}
+
+#overlay-image.active {
+  opacity: 1;
+}
+
+
+
+#headline {
+  color: rgb(7, 7, 7);
+  font-size:34px;
+}
+
+#canvas-container {
+  position:relative!important;
+  width: 444px;
+  height: 444px;
+}
+
+#main-container button {
+  background-color: #ffecbb!important;
+  color:black!important;
+  font-weight: bold!important;
+}
+#main-container button:disabled {
+  background-color: #ceb165!important;
+  color:black!important;
+  font-weight: bold!important;
+}
+
+#main-container * {
+  font-family: "Dejavu Sans", Helvetica, sans-serif!important;
+}
