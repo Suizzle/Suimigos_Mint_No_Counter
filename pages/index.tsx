@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { SignInButton, ethos } from "ethos-connect";
-import { Disconnect, Mint, WalletActions } from "../components";
+import { Disconnect, Mint } from "../components";
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from "react";
 
