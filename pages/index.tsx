@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import { SignInButton, ethos } from "ethos-connect";
 import { Disconnect, Mint, WalletActions } from "../components";
-import Script from 'next/script';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from "react";
 
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
           <div id="main-container" className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <h2 id="headline" className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Solve the Puzzle to Mint
+                Mint (No Counter)
               </h2>
             </div>
             <div className="flex flex-col gap-4">
@@ -43,7 +42,6 @@ const Home: NextPage = () => {
               or
               <Disconnect />
             </div>
-            <Script src="../headbreaker.js"/>
           </div>
         )}
       </div>

@@ -23,12 +23,6 @@ module suimigos::suimigos_mint {
         url: Url,
     }
 
-    struct Counter has key {
-        id: UID,
-        owner: address,
-        value: u64
-    }
-
     // One-Time-Witness for the module.
     struct SUIMIGOS_MINT has drop {}
 
@@ -60,11 +54,6 @@ module suimigos::suimigos_mint {
         &nft.url
     }
 
-    // Get the Counter's `value`
-    public fun counter_value(counter: &Counter): &u64 {
-        &counter.value
-    }
-
     fun init(otw: SUIMIGOS_MINT, ctx: &mut TxContext) {
         let keys = vector[
             utf8(b"name"),
@@ -92,12 +81,6 @@ module suimigos::suimigos_mint {
         display::update_version(&mut display);
         public_transfer(publisher, sender(ctx));
         public_transfer(display, sender(ctx));
-
-        transfer::share_object(Counter {
-            id: object::new(ctx),
-            owner: tx_context::sender(ctx),
-            value: 0
-        })
     }
 
     // ===== Entrypoints =====
@@ -107,14 +90,11 @@ module suimigos::suimigos_mint {
         name: vector<u8>,
         description: vector<u8>,
         url: vector<u8>,
-        counter: &mut Counter,
         ctx: &mut TxContext
     ) {
-        assert!(counter.value < 4269, ERR_COLLECTION_ALREADY_MINTED);
         let sender = sender(ctx);
         let nft = mint(name, description, url, ctx);
-        public_transfer(nft, sender);
-        counter.value = counter.value + 1;
+        public_transfer(nft, sender); 
     }
 
 
@@ -141,10 +121,6 @@ module suimigos::suimigos_mint {
     }
 
     // ===== Public funs =====
-
-    public fun increment(counter: &mut Counter) {
-        counter.value = counter.value + 1;
-    }
 
     public fun mint(
         name: vector<u8>,

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ethos, TransactionBlock } from 'ethos-connect'
 import { SuccessMessage } from '.';
-import { MAINNET_NFT_CONTRACT } from '../lib/constants';
+import { TESTNET_NFT_CONTRACT, MAINNET_NFT_CONTRACT } from '../lib/constants';
 
 const Mint = () => {
     const { wallet } = ethos.useWallet();
@@ -13,7 +13,7 @@ const Mint = () => {
         try {
           const transactionBlock = new TransactionBlock();
           transactionBlock.moveCall({
-            target: `${MAINNET_NFT_CONTRACT}::ethos_example_nft::mint_to_sender`,
+            target: `${TESTNET_NFT_CONTRACT}::suimigos_mint::mint_to_sender`,
             arguments: [
               transactionBlock.pure("Brisebois Punk inSui"),
               transactionBlock.pure("Brisebois' Punk as an inSui NFT"),
